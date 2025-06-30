@@ -1,69 +1,39 @@
-# Integration Tests
+<p style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/cyberark/agent-guard/refs/heads/main/resources/logo.png" alt="agentwatch - AI Agent Observability Platform" width="400"/>
+    
+</p>
+<h3 style="font-family: 'Fira Mono', Monospace; text-align: center;">Security Toolset for AI Agents</h3>
 
-## Conjur Provider Test
+<p style="text-align: center;">
+    <a href="https://github.com/cyberark/agent-guard/commits/main">
+        <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/cyberark/agent-guard">
+    </a>
+    <a href="https://github.com/cyberark/agent-guard">
+        <img alt="GitHub code size" src="https://img.shields.io/github/languages/code-size/cyberark/agent-guard">
+    </a>
+    <a href="https://github.com/cyberark/agent-guard/blob/main/LICENSE">
+        <img alt="GitHub License" src="https://img.shields.io/github/license/cyberark/agent-guard"/>
+    </a>
+    <a href="https://pypi.org/project/agent-guard-core">
+        <img alt="PYPI version" src="https://img.shields.io/pypi/v/agent-guard-core" />
+    </a>   
+</p>
 
-The Conjur provider supports the following environment variables:
 
-| Environment Variable    | Description                                                                               | Required?                                  |
-|-------------------------|-------------------------------------------------------------------------------------------|--------------------------------------------|
-| CONJUR_APPLIANCE_URL    | The Conjur base URL. For example, "https://my-org.secretsmgr.cyberark.cloud/api"          | Yes                                        |
-| CONJUR_AUTHN_LOGIN      | The Conjur host (workload ID) with which the login to Conjur will be made                 | Yes                                        |
-| CONJUR_AUTHN_API_KEY    | The API key of the Conjur host (workload ID) to authenticate to Conjur                    | Yes, if API key authentication is used     |
-| CONJUR_AUTHENTICATOR_ID | If an API key is not used, which authenticator should be used to authenticate to Conjur   | Yes, if API key authentication is not used |
-| CONJUR_ACCOUNT          | The Conjur account. Default: "conjur"                                                     | No                                         |
-| CONJUR_AUTHN_IAM_REGION | If using an IAM authenticator, which AWS region should be accessed. Default: "us-east-1"  | No                                         |
+## 🌟 Overview
 
-### Running the Conjur Provider Test
+This toolset is intended for AI agent builders to simplify your work and reduce the level of boilerplate code you need to write.
 
-To run the Conjur provider, follow the steps blow:
 
-Create a file called `data.yml` with the following content:
 
-```yaml
-- !host
-  id: my-workload
-  annotations:
-    authn/api-key: true
 
-- !policy
-  id: test-toolset
-  owner: !host my-workload
-  body: []
-```
 
-Load the policy to Conjur:
+Please take a look at our [getting started](https://github.com/cyberark/agent-guard/blob/main/GETTING_STARTED.md) page and try it out!
 
-```shell
-conjur policy load -b data -f data.yml
-```
+## 🤝 Contribution
 
-Then export the environment variables as described in the table above.
+Please make sure to read the [CONTRIBUTING.md](https://github.com/cyberark/agent-guard/blob/main/CONTRIBUTING.md) file if you want to contribute to this project.
 
-Example:
-```shell
-export CONJUR_APPLIANCE_URL="https://my-org.secretsmgr.cyberark.cloud/api"
-export CONJUR_AUTHN_LOGIN="host/data/my-workload"
-export CONJUR_AUTHN_API_KEY="<API key>"
-```
+## 💁  Contact
 
-Then execute the following command to run the tests:
-
-```sh
-pytest -v -m conjur ./tests/integration
-```
-
-## AWS Secrets Manager Provider Test
-
-### Running the AWS Secrets Manager provider tests
-
-Ensure that you:
-
-- Have an AWS Account
-- An IAM role with CRUD permissions for AWS Secrets Manager
-- Valid AWS session (via AWS CLI / EC2 instance etc..)
-
-Then run the tests using the following command:
-
-```bash
-pytest -v -m aws ./tests/integration
-```
+Feel free to contact us via GitHub issues or through LinkedIn: [Gil Adda](https://www.linkedin.com/in/gil-adda-6117b9/), [Rafi Schwarz](https://www.linkedin.com/in/rafi-schwarz/). 
