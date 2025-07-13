@@ -1,22 +1,11 @@
 
-<p style="text-align: center;">
-    <img src="https://raw.githubusercontent.com/cyberark/agent-guard/refs/heads/main/resources/logo.png" alt="agentwatch - AI Agent Observability Platform" width="400"/>
-    
-</p>
-<h3 style="font-family: 'Fira Mono', Monospace; text-align: center;">Docker container for AI agents</h3>
-
-
-
-
-## 🌟 Overview
+# Docker container for AI agents
 
 CyberArk's Agent Guard for Secret Retrieval (dockerized) is built for AI agent developers, and can be used to  streamline secret retrieval and reduce boilerplate. 
 
 The tool uses the [Agent Guard CLI](../agent_guard_core/cli.md). 
 
 Agent Guard is packaged as a Docker image which is available from the [AWS Marketplace](https://link.to.aws.marketplace.com). **!!!NEED TO UPDATE IMAGE NAME ADD LINK TO AWS MARKETPLACE!!!!.**
-
-
 
 ## Before you begin
 
@@ -26,12 +15,12 @@ Make sure that:
 
   #### Example
 
-   ````
+   ```
    export AWS_ACCESS_KEY_ID="your-aws-access-id"
    export AWS_SECRET_ACCESS_KEY="your-secret-access-key"
    export AWS_SESSION_TOKEN="your-aws-token" 
    export AWS_REGION="your-region"  
-   ````
+   ```
 - You have at least one secret stored in your AWS Secrets Manager; for example: a secret named **secret1** with value **1234567890**.
 - You have a working Docker setup
 - You've downloaded the Agent Guard Docker image, `<name of image>`, from the AWS Marketplace
@@ -45,7 +34,7 @@ Make sure that:
 ## 2. Retrieve a secret
 Run the container to fetch the secret. For example, if you are using AWS Secrets Manager:
 
-````
+```
    export MY_SECRET=$(docker run \
      -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
      -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
@@ -55,7 +44,7 @@ Run the container to fetch the secret. For example, if you are using AWS Secrets
      -p aws-secretsmanager \
      -k secret1)
     
-````
+```
 
    You can now use $MY_SECRET in your scripts or application.
 
